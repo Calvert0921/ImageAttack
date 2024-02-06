@@ -23,9 +23,9 @@ def save_image(x: Tensor, path="./0.png") -> Image.Image:
 
 
 @torch.no_grad()
-def save_list_images(xs: List, folder_path="./debug/", begin_id: int = 0, image_names):
+def save_list_images(xs: List, folder_path="./debug/", begin_id: int = 0, names: List = []):
     for i, x in enumerate(xs, begin_id):
-        save_image(x, os.path.join(folder_path, image_names[i]))
+        save_image(x, os.path.join(folder_path, names[i]))
 
 
 def get_image(path: str = "image.jpg") -> Tensor:

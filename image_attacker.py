@@ -46,4 +46,4 @@ for i, x in enumerate(tqdm(images)):
     x = x.cuda()
     ssa_cw_loss.set_ground_truth(x)
     adv_x = attacker(x, None)
-    save_list_images(adv_x, dir, begin_id=i, image_names)
+    save_list_images(adv_x, dir, begin_id=i, names=image_names)
