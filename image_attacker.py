@@ -44,6 +44,7 @@ if not os.path.exists(dir):
     os.mkdir(dir)
 id = 0
 for i, x in enumerate(tqdm(images)):
+    print(images[i])
     x = x.cuda()
     ssa_cw_loss.set_ground_truth(x)
     adv_x = attacker(x, None)
