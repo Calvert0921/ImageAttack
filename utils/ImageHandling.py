@@ -42,5 +42,5 @@ def get_list_image(path: str, num_images: int) -> List[Tensor]:
     num_images = min(num_images, len(images))
     selected_images = random.sample(images, num_images)
     for image in selected_images:
-        result.append(get_image(os.path.join(path, image)))
+        result.append(get_image(os.path.join(path, image)), image)
     return result

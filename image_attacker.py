@@ -11,7 +11,7 @@ from attacks import SSA_CommonWeakness
 from torchvision import transforms
 import os
 
-images = get_list_image("./dataset/NIPS17", 3)
+images, image_names = get_list_image("./dataset/NIPS17", 3)
 resizer = transforms.Resize((224, 224))
 images = [resizer(i).unsqueeze(0) for i in images]
 
@@ -44,7 +44,7 @@ if not os.path.exists(dir):
     os.mkdir(dir)
 id = 0
 for i, x in enumerate(tqdm(images)):
-    print(images[i])
+    print(image_names[i])
     x = x.cuda()
     ssa_cw_loss.set_ground_truth(x)
     adv_x = attacker(x, None)
