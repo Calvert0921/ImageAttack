@@ -39,7 +39,7 @@ attacker = SSA_CommonWeakness(
     criterion=ssa_cw_loss,
 )
 
-dir = "./attack_img_encoder_misdescription/"
+dir = "./perturbed_images/"
 if not os.path.exists(dir):
     os.mkdir(dir)
 id = 0
