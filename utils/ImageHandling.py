@@ -35,14 +35,11 @@ def get_image(path: str = "image.jpg") -> Tensor:
     return transform(image)
 
 
-def get_list_image(path: str, num_images: int) -> List[Tensor]:
+def get_list_image(path: str) -> List[Tensor]:
     result = []
     image_names = []
     images = os.listdir(path)
-
-    num_images = min(num_images, len(images))
-    selected_images = random.sample(images, num_images)
-    for image in selected_images:
+    for image in images:
         result.append((get_image(os.path.join(path, image))))
         image_names.append(image)
     return result, image_names

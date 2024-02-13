@@ -11,7 +11,7 @@ from attacks import SSA_CommonWeakness
 from torchvision import transforms
 import os
 
-images, image_names = get_list_image("./dataset/NIPS17", 3)
+images, image_names = get_list_image("./dataset/test_files")
 resizer = transforms.Resize((224, 224))
 images = [resizer(i).unsqueeze(0) for i in images]
 
@@ -35,7 +35,7 @@ attacker = SSA_CommonWeakness(
     models,
     epsilon=16 / 255,
     step_size=1 / 255,
-    total_step=5,
+    total_step=500,
     criterion=ssa_cw_loss,
 )
 
