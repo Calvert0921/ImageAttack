@@ -35,7 +35,7 @@ attacker = SSA_CommonWeakness(
     models,
     epsilon=16 / 255,
     step_size=1 / 255,
-    total_step=500,
+    total_step=5,
     criterion=ssa_cw_loss,
 )
 
