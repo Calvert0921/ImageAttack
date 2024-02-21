@@ -10,7 +10,7 @@ def login():
     chrome_driver_path = r"D:\chromedriver\chromedriver.exe"
 
     user_email = "calvert0921@outlook.com"
-    password = "fangzhizhou123"
+    password = ""
     os.system('taskkill /im chromedriver.exe /F') # Make sure all processes closed
     os.system('taskkill /im chrome.exe /F') # Make sure all processes closed
     options = webdriver.ChromeOptions()
