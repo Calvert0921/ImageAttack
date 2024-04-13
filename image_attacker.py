@@ -32,21 +32,21 @@ def ssa_cw_count_to_index(count, num_models=len(models), ssa_N=20):
 ssa_cw_loss = EnsembleFeatureLoss(models, ssa_cw_count_to_index, feature_loss=torch.nn.MSELoss())
 
 
-# attacker = SSA_CommonWeakness(
+attacker = SSA_CommonWeakness(
+    models,
+    epsilon=16 / 255,
+    step_size=1 / 255,
+    total_step=10,
+    criterion=ssa_cw_loss,
+)
+
+# attacker = MI_CommonWeakness(
 #     models,
 #     epsilon=16 / 255,
 #     step_size=1 / 255,
 #     total_step=500,
 #     criterion=ssa_cw_loss,
 # )
-
-attacker = MI_CommonWeakness(
-    models,
-    epsilon=16 / 255,
-    step_size=1 / 255,
-    total_step=500,
-    criterion=ssa_cw_loss,
-)
 
 dir = "./perturbed_images/"
 if not os.path.exists(dir):
