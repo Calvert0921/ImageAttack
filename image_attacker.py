@@ -8,6 +8,7 @@ from surrogates import (
 from utils import get_list_image, save_list_images
 from tqdm import tqdm
 from attacks import SSA_CommonWeakness
+from attacks import MI_SAM
 from torchvision import transforms
 import os
 
@@ -31,11 +32,19 @@ def ssa_cw_count_to_index(count, num_models=len(models), ssa_N=20):
 ssa_cw_loss = EnsembleFeatureLoss(models, ssa_cw_count_to_index, feature_loss=torch.nn.MSELoss())
 
 
-attacker = SSA_CommonWeakness(
+# attacker = SSA_CommonWeakness(
+#     models,
+#     epsilon=16 / 255,
+#     step_size=1 / 255,
+#     total_step=500,
+#     criterion=ssa_cw_loss,
+# )
+
+attacker = MI_SAM(
     models,
     epsilon=16 / 255,
     step_size=1 / 255,
-    total_step=5,
+    total_step=500,
     criterion=ssa_cw_loss,
 )
 
